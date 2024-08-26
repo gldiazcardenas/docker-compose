@@ -5,3 +5,4 @@ kafka/data
 mongodb/data
 mysql/data
 redis/data
+elastic_kibana/data

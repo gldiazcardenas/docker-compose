@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   arangodb:
     image: arangodb:latest

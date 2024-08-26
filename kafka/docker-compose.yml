@@ -1,6 +1,5 @@
-version: '3'
+version: '3.3'
 services:
-
   zoo1:
     image: confluentinc/cp-zookeeper:7.3.2
     restart: always
