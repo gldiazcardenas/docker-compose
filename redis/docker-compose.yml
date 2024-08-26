@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/root/redis
+      - ./data/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      REDIS_PASSWORD: 1234
+      REDIS_PORT: 6379
+      REDIS_DATABASES: 16
+    networks:
+      - redis-network
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      REDIS_HOSTS: redis
+      REDIS_HOST: redis
+      REDIS_PORT: redis:6379
+      REDIS_PASSWORD: 1234
+      HTTP_USER: root
+      HTTP_PASSWORD: 1234
+    ports:
+      - "8081:8081"
+    networks:
+      - redis-network
+
+networks:
+  redis-network:
+    driver: bridge
