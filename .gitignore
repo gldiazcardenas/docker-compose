@@ -1,1 +1,7 @@
 .idea
+cassandra/data
+arangodb/data
+kafka/data
+mongodb/data
+mysql/data
+redis/data
