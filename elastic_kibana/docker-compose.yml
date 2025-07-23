@@ -3,7 +3,6 @@ services:
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:8.7.1
-    restart: always
     environment:
       - xpack.security.enabled=false
       - xpack.security.enrollment.enabled=false
@@ -20,12 +19,11 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - ./data/elasticsearch:/usr/share/elasticsearch/data
+      - ./data:/usr/share/elasticsearch/data
 
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:8.7.1
-    restart: always
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200    # address of elasticsearch docker container which kibana will connect
     ports:

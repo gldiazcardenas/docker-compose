@@ -1,7 +1,6 @@
 services:
   zoo1:
     image: confluentinc/cp-zookeeper:7.3.2
-    restart: always
     hostname: zoo1
     container_name: zoo1
     ports:
@@ -10,10 +9,12 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_SERVERS: zoo1:2888:3888
+    volumes: 
+      - ./data/zoo/data:/var/lib/zookeeper/data
+      - ./data/zoo/log:/var/lib/zookeeper/log
 
   kafka1:
     image: confluentinc/cp-kafka:7.3.2
-    restart: always
     hostname: kafka1
     container_name: kafka1
     ports:
@@ -36,3 +37,5 @@ services:
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
       - zoo1
+    volumes: 
+      - ./data/broker:/var/lib/kafka/data
