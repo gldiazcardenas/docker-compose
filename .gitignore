@@ -7,4 +7,4 @@ mysql/data
 redis/data
 elastic_kibana/data
 postgresql/data
-nats-jetstream/jetstream-cluster
+nats-jetstream/data
